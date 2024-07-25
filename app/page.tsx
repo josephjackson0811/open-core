@@ -22,7 +22,7 @@ import {
   Paper,
   Popper,
 } from "@mui/material";
-import React from "react";
+import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 
 const options = [
@@ -153,6 +153,8 @@ export default function Home() {
   const [width, setWidth] = useState(1444);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
+  const [imageHeight, setImageHeight] = useState(100);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   const buttonLables = [
     "All Resources",
@@ -168,6 +170,7 @@ export default function Home() {
       setWidth(innerWidth);
       setIsMobile(innerWidth <= 665);
       setIsTablet(innerWidth <= 1137);
+      setImageHeight(imgRef.current?.height as number);
     };
     handleWidth();
     window.addEventListener("resize", handleWidth);
@@ -233,12 +236,21 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        <Grid container spacing={2} className="">
-          <Grid item xs={4} className="flex flex-col gap-4">
+        <Grid
+          container
+          spacing={2}
+          className={isTablet ? "flex flex-col items-center" : ""}
+        >
+          <Grid
+            item
+            xs={isTablet ? 11 : 4}
+            className="flex flex-col gap-4 w-full"
+          >
             <div>
               <img
                 src="1.png"
-                className="w-full rounded-2xl inline-block h-[343.73px]"
+                className="w-full rounded-2xl inline-block"
+                style={{ height: imageHeight }}
               />
             </div>
             <div className="text-2xl text-[#344054] max-w-[360px]">
@@ -252,9 +264,17 @@ export default function Home() {
               ></Chip>
             </div>
           </Grid>
-          <Grid item xs={4} className="flex flex-col gap-4">
+          <Grid
+            item
+            xs={isTablet ? 11 : 4}
+            className="flex flex-col gap-4 w-full"
+          >
             <div>
-              <img src="2.png" className="w-full rounded-2xl inline-block" />
+              <img
+                src="2.png"
+                className="w-full rounded-2xl inline-block"
+                ref={imgRef}
+              />
             </div>
             <div className="text-2xl text-[#344054] max-w-[360px]">
               Designing Impression: The Power of First Impressions
@@ -267,7 +287,11 @@ export default function Home() {
               ></Chip>
             </div>
           </Grid>
-          <Grid item xs={4} className="flex flex-col gap-4 mb-20">
+          <Grid
+            item
+            xs={isTablet ? 11 : 4}
+            className="flex flex-col gap-4 mb-20 w-full"
+          >
             <div>
               <img src="3.png" className="w-full rounded-2xl inline-block" />
             </div>
@@ -289,57 +313,70 @@ export default function Home() {
               ></Chip>
             </div>
           </Grid>
-          <Grid item xs={4} className="flex flex-col gap-4">
-            <div>
-              <img src="4.png" className="w-full rounded-2xl inline-block" />
-            </div>
-            <div className="text-2xl text-[#344054] max-w-[360px]">
-              Designing Impression: The Power of First Impressions
-            </div>
-            <div>
-              <Chip
-                label="Design"
-                className="text-[14px] py-1 px-2 rounded-md mr-2"
-              ></Chip>
-              <Chip
-                label="UI UX"
-                className="text-[14px] py-1 px-2 rounded-md mr-2"
-              ></Chip>
-              <Chip
-                label="Branding"
-                className="text-[14px] py-1 px-2 rounded-md mr-2"
-              ></Chip>
-            </div>
-          </Grid>
-          <Grid item xs={4} className="flex flex-col gap-4">
-            <div>
-              <img src="5.png" className="w-full rounded-2xl inline-block" />
-            </div>
-            <div className="text-2xl text-[#344054] max-w-[360px]">
-              Designing Impression: The Power of First Impressions
-            </div>
-            <div>
-              <Chip
-                label="Design"
-                className="text-[14px] py-1 px-2 rounded-md mr-2"
-              ></Chip>
-            </div>
-          </Grid>
-          <Grid item xs={4} className="flex flex-col gap-4">
-            <div>
-              <img src="6.png" className="w-full rounded-2xl inline-block" />
-            </div>
-            <div className="text-2xl text-[#344054] max-w-[360px]">
-              OpenCore Customer Acquisition Strategy
-            </div>
-            <div>
-              <Chip
-                label="Marketing PDF"
-                icon={<InsertDriveFile />}
-                className="text-[14px] py-1 px-2 rounded-md mr-2"
-              ></Chip>
-            </div>
-          </Grid>
+          {!isTablet && (
+            <>
+              <Grid item xs={4} className="flex flex-col gap-4">
+                <div>
+                  <img
+                    src="4.png"
+                    className="w-full rounded-2xl inline-block"
+                  />
+                </div>
+                <div className="text-2xl text-[#344054] max-w-[360px]">
+                  Designing Impression: The Power of First Impressions
+                </div>
+                <div>
+                  <Chip
+                    label="Design"
+                    className="text-[14px] py-1 px-2 rounded-md mr-2"
+                  ></Chip>
+                  <Chip
+                    label="UI UX"
+                    className="text-[14px] py-1 px-2 rounded-md mr-2"
+                  ></Chip>
+                  <Chip
+                    label="Branding"
+                    className="text-[14px] py-1 px-2 rounded-md mr-2"
+                  ></Chip>
+                </div>
+              </Grid>
+              <Grid item xs={4} className="flex flex-col gap-4">
+                <div>
+                  <img
+                    src="5.png"
+                    className="w-full rounded-2xl inline-block"
+                  />
+                </div>
+                <div className="text-2xl text-[#344054] max-w-[360px]">
+                  Designing Impression: The Power of First Impressions
+                </div>
+                <div>
+                  <Chip
+                    label="Design"
+                    className="text-[14px] py-1 px-2 rounded-md mr-2"
+                  ></Chip>
+                </div>
+              </Grid>
+              <Grid item xs={4} className="flex flex-col gap-4">
+                <div>
+                  <img
+                    src="6.png"
+                    className="w-full rounded-2xl inline-block"
+                  />
+                </div>
+                <div className="text-2xl text-[#344054] max-w-[360px]">
+                  OpenCore Customer Acquisition Strategy
+                </div>
+                <div>
+                  <Chip
+                    label="Marketing PDF"
+                    icon={<InsertDriveFile />}
+                    className="text-[14px] py-1 px-2 rounded-md mr-2"
+                  ></Chip>
+                </div>
+              </Grid>
+            </>
+          )}
         </Grid>
       </div>
       <div className="w-full px-[74px] py-24">
