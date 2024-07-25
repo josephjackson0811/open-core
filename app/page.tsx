@@ -96,12 +96,9 @@ export default function Home() {
         <Grid container spacing={2} className="">
           <Grid item xs={4} className="flex flex-col gap-4">
             <div>
-              <Image
-                src={"/1.png"}
-                alt={"1"}
-                width={100}
-                height={100}
-                className="w-full rounded-2xl inline-block"
+              <img
+                src="1.png"
+                className="w-full rounded-2xl inline-block h-[343.73px]"
               />
             </div>
             <div className="text-2xl text-[#344054] max-w-[360px]">
@@ -117,13 +114,7 @@ export default function Home() {
           </Grid>
           <Grid item xs={4} className="flex flex-col gap-4">
             <div>
-              <Image
-                src={"/2.png"}
-                alt={"2"}
-                width={100}
-                height={100}
-                className="w-full rounded-2xl inline-block"
-              />
+              <img src="2.png" className="w-full rounded-2xl inline-block" />
             </div>
             <div className="text-2xl text-[#344054] max-w-[360px]">
               Designing Impression: The Power of First Impressions
@@ -138,13 +129,7 @@ export default function Home() {
           </Grid>
           <Grid item xs={4} className="flex flex-col gap-4 mb-20">
             <div>
-              <Image
-                src={"/3.png"}
-                alt={"3"}
-                width={100}
-                height={100}
-                className="w-full rounded-2xl inline-block"
-              />
+              <img src="3.png" className="w-full rounded-2xl inline-block" />
             </div>
             <div className="text-2xl text-[#344054] max-w-[360px]">
               Fluid Card Animation in After Effects
@@ -166,13 +151,7 @@ export default function Home() {
           </Grid>
           <Grid item xs={4} className="flex flex-col gap-4">
             <div>
-              <Image
-                src={"/4.png"}
-                alt={"4"}
-                width={100}
-                height={100}
-                className="w-full rounded-2xl inline-block"
-              />
+              <img src="4.png" className="w-full rounded-2xl inline-block" />
             </div>
             <div className="text-2xl text-[#344054] max-w-[360px]">
               Designing Impression: The Power of First Impressions
@@ -194,13 +173,7 @@ export default function Home() {
           </Grid>
           <Grid item xs={4} className="flex flex-col gap-4">
             <div>
-              <Image
-                src={"/5.png"}
-                alt={"5"}
-                width={100}
-                height={100}
-                className="w-full rounded-2xl inline-block"
-              />
+              <img src="5.png" className="w-full rounded-2xl inline-block" />
             </div>
             <div className="text-2xl text-[#344054] max-w-[360px]">
               Designing Impression: The Power of First Impressions
@@ -214,13 +187,7 @@ export default function Home() {
           </Grid>
           <Grid item xs={4} className="flex flex-col gap-4">
             <div>
-              <Image
-                src={"/6.png"}
-                alt={"6"}
-                width={100}
-                height={100}
-                className="w-full rounded-2xl inline-block"
-              />
+              <img src="6.png" className="w-full rounded-2xl inline-block" />
             </div>
             <div className="text-2xl text-[#344054] max-w-[360px]">
               OpenCore Customer Acquisition Strategy
@@ -255,6 +222,54 @@ export default function Home() {
               </div>
             </Grid>
           </Grid>
+        </div>
+      </div>
+      <div className="w-full px-[74px] py-24 bg-[#294F74]">
+        <div className="w-full px-24 pt-20 rounded-[36px] bg-white flex flex-col justify-between gap-28">
+          <div className="flex flex-col gap-16">
+            <div className="flex justify-between">
+              <div className="w-64 flex gap-6 flex-col">
+                <div>
+                  <div className=" font-semibold text-xl">Say Hello!</div>
+                  <div className=" text-xl">opencoregroup@gmail.com</div>
+                </div>
+                <div className=" flex justify-between">
+                  <a href="#" className="p-2 rounded-md bg-[#F2F4F7]">
+                    <i className="fa fa-instagram w-6 h-6 text-center"></i>
+                  </a>
+                  <a href="#" className="p-2 rounded-md bg-[#F2F4F7]">
+                    <i className="fa fa-facebook w-6 h-6 text-center"></i>
+                  </a>
+                  <a href="#" className="p-2 rounded-md bg-[#F2F4F7]">
+                    <i className="fa fa-twitter w-6 h-6 text-center"></i>
+                  </a>
+                  <a href="#" className="p-2 rounded-md bg-[#F2F4F7]">
+                    <i className="fa fa-linkedin w-6 h-6 text-center"></i>
+                  </a>
+                </div>
+              </div>
+              <div className=" flex gap-16 text-xl text-[#475467]">
+                <div className=" flex flex-col gap-3">
+                  <a href="#">Home</a>
+                  <a href="#">About us</a>
+                  <a href="#">Work</a>
+                </div>
+                <div className=" flex flex-col gap-3">
+                  <a href="#">Services</a>
+                  <a href="#">Contact us</a>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-between text-[#667085] text-xl">
+              <div className="">Toronto, ON Canada</div>
+              <div className="">OpenCore. All Rights Reserved</div>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <div className=" max-w-[877px]">
+              <img src="logo.png" className="w-full mb-[-30px]" />
+            </div>
+          </div>
         </div>
       </div>
     </main>
