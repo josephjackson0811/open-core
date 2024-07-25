@@ -3,11 +3,11 @@ export default function Home() {
     <main>
       <div className="flex justify-center items-center h-screen">
         <div className=" absolute top-[52.5px] left-50% border flex rounded-[500px] h-[88px]">
-          <div className="w-[176px] flex justify-center items-center">
-            image
+          <div className="w-[88px] flex justify-center items-center text-[41px]">
+            <i className="fa fa-creative-commons"></i>
           </div>
-          <div className="w-[176px] flex justify-center items-center border-l">
-            image
+          <div className="w-[88px] flex justify-center items-center border-l text-[41px]">
+            <i className="fa fa-bars"></i>
           </div>
         </div>
         <div className="text-center max-w-[730px]">
