@@ -51,6 +51,13 @@ export default function Home() {
   return (
     <main>
       <div className="flex justify-center items-center h-screen">
+        <div>
+          <img
+            src="Union_1.png"
+            alt=""
+            className="absolute top-0 left-0 w-full"
+          />
+        </div>
         <div className=" absolute top-[52.5px] left-50% border flex rounded-[500px] h-[88px]">
           <div className="w-[88px] flex justify-center items-center text-[41px]">
             <i className="fa fa-creative-commons"></i>
@@ -203,25 +210,33 @@ export default function Home() {
         </Grid>
       </div>
       <div className="w-full px-[74px] py-24">
-        <div className="w-full px-24 py-32 bg-gradient-to-r from-[#2F5478] to-[#22405C] text-white">
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <div className=" max-w-[560px]">
-                <div className=" font-normal text-[64px]">
-                  Transforming your Ideas into reality
+        <div className=" relative w-full">
+          <div className="absolute w-full">
+            <img src="Union_3.png" className="w-full" />
+          </div>
+          <div className="absolute bottom-0 w-full">
+            <img src="Union_2.png" className="w-full" />
+          </div>
+          <div className="w-full px-24 py-32 bg-[#22405C] text-white">
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <div className=" max-w-[560px]">
+                  <div className=" font-normal text-[64px]">
+                    Transforming your Ideas into reality
+                  </div>
+                  <div className="font-medium text-xl">
+                    Let's build something extraordinary together to captivate
+                    your audience.
+                  </div>
                 </div>
-                <div className="font-medium text-xl">
-                  Let's build something extraordinary together to captivate your
-                  audience.
+              </Grid>
+              <Grid item xs={6} className="flex justify-end">
+                <div className="rounded-full border w-[250px] h-[250px] flex justify-center items-center">
+                  Let’s Work Together!
                 </div>
-              </div>
+              </Grid>
             </Grid>
-            <Grid item xs={6} className="flex justify-end">
-              <div className="rounded-full border w-[250px] h-[250px] flex justify-center items-center">
-                Let’s Work Together!
-              </div>
-            </Grid>
-          </Grid>
+          </div>
         </div>
       </div>
       <div className="w-full px-[74px] py-24 bg-[#294F74]">
