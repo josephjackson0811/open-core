@@ -52,10 +52,10 @@ const CustomizedInputBase = () => {
   );
 };
 
-export const SplitButton = () => {
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef<HTMLDivElement>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+const SplitButton = () => {
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef<HTMLDivElement>(null);
+  const [selectedIndex, setSelectedIndex] = useState(1);
 
   const handleMenuItemClick = (
     event: React.MouseEvent<HTMLLIElement, MouseEvent>,
@@ -406,7 +406,7 @@ export default function Home() {
               </Grid>
               <Grid item xs={isTablet ? 12 : 6} className="flex justify-end">
                 <div className="rounded-full border w-[250px] h-[250px] flex justify-center items-center">
-                  Let’s Work Together!
+                  Let&apos;s Work Together!
                 </div>
               </Grid>
             </Grid>
