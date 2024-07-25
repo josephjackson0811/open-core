@@ -22,7 +22,6 @@ import {
   Paper,
   Popper,
 } from "@mui/material";
-import { log } from "console";
 import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 
@@ -168,7 +167,6 @@ export default function Home() {
       setIsTablet(innerWidth <= 1137);
       setImageHeight(imgRef.current?.height as number);
       setLogoHeight(logoRef.current?.height as number);
-      console.log(logoHeight);
     };
     handleWidth();
     window.addEventListener("resize", handleWidth);
@@ -207,7 +205,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="mx-[98px] mb-10">
+      <div className={"mb-10" + (isTablet ? " mx-4" : " mx-[98px]")}>
         <div className=" relative mb-8">
           <CustomizedInputBase />
         </div>
@@ -377,7 +375,7 @@ export default function Home() {
           )}
         </Grid>
       </div>
-      <div className="w-full px-[74px] py-24">
+      <div className={"w-full py-24" + (isTablet ? " px-4" : " px-[74px]")}>
         <div className=" relative w-full">
           <div className="absolute w-full">
             <img src="Union_3.png" className="w-full" />
@@ -421,14 +419,18 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full px-[74px] py-24 bg-[#294F74]">
+      <div
+        className={
+          "w-full py-24 bg-[#294F74]" + (isTablet ? " px-4" : " px-[74px]")
+        }
+      >
         <div
           className={
             "w-full pt-20 rounded-[36px] bg-white flex flex-col justify-between gap-28" +
             (isTablet ? "" : " px-24")
           }
         >
-          <div className="flex flex-col">
+          <div className={"flex flex-col" + (isTablet ? "" : " gap-16")}>
             <div
               className={
                 "flex" +
