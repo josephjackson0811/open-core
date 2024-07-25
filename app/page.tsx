@@ -168,7 +168,7 @@ export default function Home() {
     const handleWidth = () => {
       console.log(innerHeight, innerWidth);
       setWidth(innerWidth);
-      setIsMobile(innerWidth <= 665);
+      setIsMobile(innerWidth <= 820);
       setIsTablet(innerWidth <= 1137);
       setImageHeight(imgRef.current?.height as number);
     };
@@ -178,7 +178,7 @@ export default function Home() {
     // return window.removeEventListener("resize", handleWidth);
   });
 
-  // width = 665px
+  // width = 665px / 820
 
   return (
     <main>
@@ -387,11 +387,25 @@ export default function Home() {
           <div className="absolute bottom-0 w-full">
             <img src="Union_2.png" className="w-full" />
           </div>
-          <div className="w-full px-24 py-32 bg-[#22405C] text-white">
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
+          <div
+            className={
+              "w-full py-32 bg-[#22405C] text-white" +
+              (isMobile ? "" : " px-24")
+            }
+          >
+            <Grid
+              container
+              spacing={2}
+              className={isTablet ? " flex flex-col items-center" : ""}
+            >
+              <Grid item xs={isTablet ? 10 : 6}>
                 <div className=" max-w-[560px]">
-                  <div className=" font-normal text-[64px]">
+                  <div
+                    className={
+                      " font-normal" +
+                      (isMobile ? ` text-[40px]` : ` text-[64px]`)
+                    }
+                  >
                     Transforming your Ideas into reality
                   </div>
                   <div className="font-medium text-xl">
@@ -400,7 +414,7 @@ export default function Home() {
                   </div>
                 </div>
               </Grid>
-              <Grid item xs={6} className="flex justify-end">
+              <Grid item xs={isTablet ? 12 : 6} className="flex justify-end">
                 <div className="rounded-full border w-[250px] h-[250px] flex justify-center items-center">
                   Let’s Work Together!
                 </div>
