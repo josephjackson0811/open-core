@@ -1,5 +1,5 @@
-import { Search } from "@mui/icons-material";
-import { IconButton, InputBase, Paper } from "@mui/material";
+import { FilterAltOutlined, Search } from "@mui/icons-material";
+import { Button, IconButton, InputBase, Paper } from "@mui/material";
 
 const CustomizedInputBase = () => {
   return (
@@ -26,6 +26,14 @@ const CustomizedInputBase = () => {
 };
 
 export default function Home() {
+  const buttonLables = [
+    "All Resources",
+    "Design",
+    "Development",
+    "Marketing",
+    "Branding",
+  ];
+
   return (
     <main>
       <div className="flex justify-center items-center h-screen">
@@ -49,8 +57,27 @@ export default function Home() {
         </div>
       </div>
       <div className="mx-[98px]">
-        <div className=" relative">
+        <div className=" relative mb-8">
           <CustomizedInputBase />
+        </div>
+        <div className="flex justify-between">
+          <div className="flex justify-between gap-4">
+            {buttonLables.map((label, index) => (
+              <Button
+                className="px-4 py-3 rounded-lg"
+                variant="outlined"
+                key={index}
+              >
+                {label}
+              </Button>
+            ))}
+          </div>
+          <div>
+            <Button className="px-4 py-3 rounded-lg" variant="outlined">
+              <FilterAltOutlined />
+              Filters
+            </Button>
+          </div>
         </div>
       </div>
     </main>
