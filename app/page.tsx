@@ -1,4 +1,7 @@
+"use client";
+
 import {
+  ArrowDropDown,
   Code,
   FilterAltOutlined,
   InsertDriveFile,
@@ -7,13 +10,28 @@ import {
 } from "@mui/icons-material";
 import {
   Button,
+  ButtonGroup,
   Chip,
+  ClickAwayListener,
   Grid,
+  Grow,
   IconButton,
   InputBase,
+  MenuItem,
+  MenuList,
   Paper,
+  Popper,
 } from "@mui/material";
-import Image from "next/image";
+import React from "react";
+import { useEffect, useState } from "react";
+
+const options = [
+  "All Resources",
+  "Design",
+  "Development",
+  "Marketing",
+  "Branding",
+];
 
 const CustomizedInputBase = () => {
   return (
@@ -39,7 +57,103 @@ const CustomizedInputBase = () => {
   );
 };
 
+export const SplitButton = () => {
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef<HTMLDivElement>(null);
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+  const handleClick = () => {
+    console.info(`You clicked ${options[selectedIndex]}`);
+  };
+
+  const handleMenuItemClick = (
+    event: React.MouseEvent<HTMLLIElement, MouseEvent>,
+    index: number
+  ) => {
+    setSelectedIndex(index);
+    setOpen(false);
+  };
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event: Event) => {
+    if (
+      anchorRef.current &&
+      anchorRef.current.contains(event.target as HTMLElement)
+    ) {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  return (
+    <React.Fragment>
+      <ButtonGroup
+        variant="outlined"
+        ref={anchorRef}
+        aria-label="Button group with a nested menu"
+      >
+        <Button onClick={handleClick}>{options[selectedIndex]}</Button>
+        <Button
+          size="small"
+          aria-controls={open ? "split-button-menu" : undefined}
+          aria-expanded={open ? "true" : undefined}
+          aria-label="select merge strategy"
+          aria-haspopup="menu"
+          onClick={handleToggle}
+        >
+          <ArrowDropDown />
+        </Button>
+      </ButtonGroup>
+      <Popper
+        sx={{
+          zIndex: 1,
+        }}
+        open={open}
+        anchorEl={anchorRef.current}
+        role={undefined}
+        transition
+        disablePortal
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom",
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList id="split-button-menu" autoFocusItem>
+                  {options.map((option, index) => (
+                    <MenuItem
+                      key={option}
+                      // disabled={index === 2}
+                      selected={index === selectedIndex}
+                      onClick={(event) => handleMenuItemClick(event, index)}
+                    >
+                      {option}
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    </React.Fragment>
+  );
+};
+
 export default function Home() {
+  const [width, setWidth] = useState(1444);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
   const buttonLables = [
     "All Resources",
     "Design",
@@ -48,9 +162,24 @@ export default function Home() {
     "Branding",
   ];
 
+  useEffect(() => {
+    const handleWidth = () => {
+      console.log(innerHeight, innerWidth);
+      setWidth(innerWidth);
+      setIsMobile(innerWidth <= 665);
+      setIsTablet(innerWidth <= 1137);
+    };
+    handleWidth();
+    window.addEventListener("resize", handleWidth);
+
+    // return window.removeEventListener("resize", handleWidth);
+  });
+
+  // width = 665px
+
   return (
     <main>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen w-full">
         <div>
           <img
             src="Union_1.png"
@@ -83,15 +212,19 @@ export default function Home() {
         </div>
         <div className="flex justify-between mb-12">
           <div className="flex justify-between gap-4">
-            {buttonLables.map((label, index) => (
-              <Button
-                className="px-4 py-3 rounded-lg"
-                variant="outlined"
-                key={index}
-              >
-                {label}
-              </Button>
-            ))}
+            {isTablet ? (
+              <SplitButton />
+            ) : (
+              buttonLables.map((label, index) => (
+                <Button
+                  className="px-4 py-3 rounded-lg"
+                  variant="outlined"
+                  key={index}
+                >
+                  {label}
+                </Button>
+              ))
+            )}
           </div>
           <div>
             <Button className="px-4 py-3 rounded-lg" variant="outlined">
