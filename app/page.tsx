@@ -24,6 +24,7 @@ import {
 } from "@mui/material";
 import React, { useRef } from "react";
 import { useEffect, useState } from "react";
+import { useInView } from "framer-motion";
 
 const options = [
   "All Resources",
@@ -146,6 +147,8 @@ export default function Home() {
   const [logoHeight, setLogoHeight] = useState(100);
   const imgRef = useRef<HTMLImageElement>(null);
   const logoRef = useRef<HTMLImageElement>(null);
+  const isInViewRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(isInViewRef);
 
   const buttonLables = [
     "All Resources",
@@ -172,6 +175,7 @@ export default function Home() {
 
   return (
     <main>
+      <div ref={isInViewRef}></div>
       <div className="flex justify-center items-center h-screen w-full">
         <div>
           <img
@@ -180,11 +184,29 @@ export default function Home() {
             className="absolute top-0 left-0 w-full"
           />
         </div>
-        <div className=" fixed top-[52.5px] left-50% border flex rounded-[500px] h-[88px] z-50 bg-white">
-          <div className="w-[88px] flex justify-center items-center text-[41px]">
-            <i className="fa fa-creative-commons"></i>
+        <div className=" fixed top-[52.5px] left-50% border flex rounded-[500px] h-[88px] z-50 bg-white max-w-full">
+          <div
+            className={
+              " flex justify-center items-center text-[41px]" +
+              (!isInView ? " pl-4 " : " w-[88px]")
+            }
+          >
+            {!isInView ? (
+              <img src="logo.png" className="w-[200px]" />
+            ) : (
+              <i className="fa fa-creative-commons"></i>
+            )}
           </div>
-          <div className="w-[88px] flex justify-center items-center border-l text-[41px]">
+          <div
+            className={!isInView ? " w-[1024px]" : "w-0 border-l"}
+            style={{ transition: ".5s" }}
+          ></div>
+          <div
+            className={
+              "w-[88px] flex justify-center items-center text-[41px]" +
+              (!isInView ? " pr-4" : " border-l")
+            }
+          >
             <i className="fa fa-bars"></i>
           </div>
         </div>
