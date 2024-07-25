@@ -399,8 +399,8 @@ export default function Home() {
                     Transforming your Ideas into reality
                   </div>
                   <div className="font-medium text-xl">
-                    Let's build something extraordinary together to captivate
-                    your audience.
+                    Let&apos;s build something extraordinary together to
+                    captivate your audience.
                   </div>
                 </div>
               </Grid>
