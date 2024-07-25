@@ -1,3 +1,30 @@
+import { Search } from "@mui/icons-material";
+import { IconButton, InputBase, Paper } from "@mui/material";
+
+const CustomizedInputBase = () => {
+  return (
+    <Paper
+      component="form"
+      // sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 400 }}
+      className="rounded-2xl w-full"
+    >
+      <IconButton
+        sx={{ p: "10px" }}
+        aria-label="menu"
+        className=" absolute top-[43px] left-8"
+      >
+        <Search />
+      </IconButton>
+      <InputBase
+        sx={{ ml: 1, flex: 1 }}
+        placeholder="Search for resources and tutorials"
+        className="pr-4 py-5 pl-20 w-full"
+        // inputProps={{ "aria-label": "search google maps" }}
+      />
+    </Paper>
+  );
+};
+
 export default function Home() {
   return (
     <main>
@@ -19,6 +46,11 @@ export default function Home() {
             Explore our comprehensive library of tools and templates for
             developers, designers, marketers, and branding experts.
           </div>
+        </div>
+      </div>
+      <div className="mx-[98px]">
+        <div className=" relative">
+          <CustomizedInputBase />
         </div>
       </div>
     </main>
