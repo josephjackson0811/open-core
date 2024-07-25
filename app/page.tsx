@@ -180,7 +180,7 @@ export default function Home() {
             className="absolute top-0 left-0 w-full"
           />
         </div>
-        <div className=" absolute top-[52.5px] left-50% border flex rounded-[500px] h-[88px]">
+        <div className=" fixed top-[52.5px] left-50% border flex rounded-[500px] h-[88px] z-50 bg-white">
           <div className="w-[88px] flex justify-center items-center text-[41px]">
             <i className="fa fa-creative-commons"></i>
           </div>
