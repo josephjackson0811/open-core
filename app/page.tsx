@@ -22,6 +22,7 @@ import {
   Paper,
   Popper,
 } from "@mui/material";
+import { log } from "console";
 import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 
@@ -62,10 +63,6 @@ export const SplitButton = () => {
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
-  const handleClick = () => {
-    console.info(`You clicked ${options[selectedIndex]}`);
-  };
-
   const handleMenuItemClick = (
     event: React.MouseEvent<HTMLLIElement, MouseEvent>,
     index: number
@@ -96,7 +93,7 @@ export const SplitButton = () => {
         ref={anchorRef}
         aria-label="Button group with a nested menu"
       >
-        <Button onClick={handleClick}>{options[selectedIndex]}</Button>
+        <Button>{options[selectedIndex]}</Button>
         <Button
           size="small"
           aria-controls={open ? "split-button-menu" : undefined}
@@ -150,11 +147,12 @@ export const SplitButton = () => {
 };
 
 export default function Home() {
-  const [width, setWidth] = useState(1444);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   const [imageHeight, setImageHeight] = useState(100);
+  const [logoHeight, setLogoHeight] = useState(100);
   const imgRef = useRef<HTMLImageElement>(null);
+  const logoRef = useRef<HTMLImageElement>(null);
 
   const buttonLables = [
     "All Resources",
@@ -166,11 +164,11 @@ export default function Home() {
 
   useEffect(() => {
     const handleWidth = () => {
-      console.log(innerHeight, innerWidth);
-      setWidth(innerWidth);
       setIsMobile(innerWidth <= 820);
       setIsTablet(innerWidth <= 1137);
       setImageHeight(imgRef.current?.height as number);
+      setLogoHeight(logoRef.current?.height as number);
+      console.log(logoHeight);
     };
     handleWidth();
     window.addEventListener("resize", handleWidth);
@@ -424,14 +422,27 @@ export default function Home() {
         </div>
       </div>
       <div className="w-full px-[74px] py-24 bg-[#294F74]">
-        <div className="w-full px-24 pt-20 rounded-[36px] bg-white flex flex-col justify-between gap-28">
-          <div className="flex flex-col gap-16">
-            <div className="flex justify-between">
+        <div
+          className={
+            "w-full pt-20 rounded-[36px] bg-white flex flex-col justify-between gap-28" +
+            (isTablet ? "" : " px-24")
+          }
+        >
+          <div className="flex flex-col">
+            <div
+              className={
+                "flex" +
+                (isTablet
+                  ? " flex-col items-center"
+                  : " justify-between gap-16")
+              }
+            >
               <div className="w-64 flex gap-6 flex-col">
                 <div>
                   <div className=" font-semibold text-xl">Say Hello!</div>
                   <div className=" text-xl">opencoregroup@gmail.com</div>
                 </div>
+
                 <div className=" flex justify-between">
                   <a href="#" className="p-2 rounded-md bg-[#F2F4F7]">
                     <i className="fa fa-instagram w-6 h-6 text-center"></i>
@@ -447,6 +458,7 @@ export default function Home() {
                   </a>
                 </div>
               </div>
+              {isTablet && <hr className=" text-[#F2F4F7] w-[80%]" />}
               <div className=" flex gap-16 text-xl text-[#475467]">
                 <div className=" flex flex-col gap-3">
                   <a href="#">Home</a>
@@ -458,15 +470,28 @@ export default function Home() {
                   <a href="#">Contact us</a>
                 </div>
               </div>
+              {isTablet && <hr className=" text-[#F2F4F7] w-[80%]" />}
             </div>
-            <div className="flex justify-between text-[#667085] text-xl">
+
+            <div
+              className={
+                "flex text-[#667085] text-xl" +
+                (isTablet ? " flex-col items-center gap-2" : " justify-between")
+              }
+            >
               <div className="">Toronto, ON Canada</div>
               <div className="">OpenCore. All Rights Reserved</div>
             </div>
           </div>
+
           <div className="flex justify-center">
             <div className=" max-w-[877px]">
-              <img src="logo.png" className="w-full mb-[-30px]" />
+              <img
+                src="logo.png"
+                className={`w-full`}
+                style={{ marginBottom: -logoHeight * 0.22 }}
+                ref={logoRef}
+              />
             </div>
           </div>
         </div>
