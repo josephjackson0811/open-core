@@ -35,11 +35,7 @@ const options = [
 
 const CustomizedInputBase = () => {
   return (
-    <Paper
-      component="form"
-      // sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 400 }}
-      className="rounded-2xl w-full"
-    >
+    <Paper component="form" className="rounded-2xl w-full">
       <IconButton
         sx={{ p: "10px" }}
         aria-label="menu"
@@ -51,7 +47,6 @@ const CustomizedInputBase = () => {
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search for resources and tutorials"
         className="pr-4 py-5 pl-20 w-full"
-        // inputProps={{ "aria-label": "search google maps" }}
       />
     </Paper>
   );
@@ -128,7 +123,6 @@ export const SplitButton = () => {
                   {options.map((option, index) => (
                     <MenuItem
                       key={option}
-                      // disabled={index === 2}
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
