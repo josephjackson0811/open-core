@@ -212,7 +212,7 @@ export default function Home() {
         </div>
         <div className="text-center max-w-[730px]">
           <div className="text-[64px] text-[#294F74] font-semibold">
-            Your Ultimate Resource Hub for Digital Success
+            Your Ultimate Resource Hub for Digital Success.
           </div>
 
           <div className="text-2xl">
